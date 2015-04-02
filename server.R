@@ -20,4 +20,14 @@ shinyServer(function(input, output) {
     selectInput("counties", "Counties", county_list, selected=county_list, multiple=TRUE)
   })
 
+  output$zips = renderUI({ 
+    zcta_list = zip.regions %>%
+      filter(cbsa.title == input$msa) %>%
+      select(region) %>%
+      unique()
+    zcta_list = zcta_list$region
+    
+    selectInput("zips", "Zips", zcta_list, selected=zcta_list, multiple=TRUE)
+  })
+  
 })
