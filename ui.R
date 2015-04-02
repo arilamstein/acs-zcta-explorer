@@ -8,6 +8,15 @@ msa_county_df = zip.regions %>%
   filter(metropolitan.micropolitan.statistical.area == "Metropolitan Statistical Area") 
 msa_list = unique(msa_county_df$cbsa.title)
 
+values = c("Population", 
+           "Median Income", 
+           "Median Rent", 
+           "% White", 
+           "% Black", 
+           "% Asian", 
+           "% Hispanic",
+           "Median Age")
+
 shinyUI(fluidPage(
 
   titlePanel("American Community Survey ZIP Explorer"),
@@ -18,6 +27,11 @@ shinyUI(fluidPage(
                   "Metropolitan Statistical Area (MSA)", 
                   msa_list,
                   sample(msa_list, 1)),
+      
+      selectInput("value",
+                  "Value",
+                  values,
+                  selected = "Population"),
       
       uiOutput("counties"),
       uiOutput("zips")
