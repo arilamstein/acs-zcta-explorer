@@ -42,4 +42,8 @@ df_demographics = merge(df_race, df_income)
 df_demographics = merge(df_demographics, df_rent)  
 df_demographics = merge(df_demographics, df_age)
 
+library(choroplethrZip)
+data(zip.regions)
+df_demographics = df_demographics[df_demographics$region %in% zip.regions$region, ]
+
 save(df_demographics, file="df_demographics.rdata")
