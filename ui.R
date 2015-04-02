@@ -8,14 +8,14 @@ msa_county_df = zip.regions %>%
   filter(metropolitan.micropolitan.statistical.area == "Metropolitan Statistical Area") 
 msa_list = unique(msa_county_df$cbsa.title)
 
-values = c("Population", 
-           "Per Capita Income", 
-           "Median Rent", 
-           "% White not Hispanic or Latino", 
-           "% Black or African American not Hispanic or Latino", 
-           "% Asian not Hispanic or Latino", 
-           "% Hispanic or Latino",
-           "Median Age")
+values = c("Population"                                         = "total_population", 
+           "Per Capita Income"                                  = "per_capita_income",
+           "Median Rent"                                        = "median_rent", 
+           "% White not Hispanic or Latino"                     = "percent_white", 
+           "% Black or African American not Hispanic or Latino" = "percent_black", 
+           "% Asian not Hispanic or Latino"                     = "percent_asian", 
+           "% Hispanic or Latino"                               = "percent_hispanic",
+           "Median Age"                                         = "median_age")
 
 shinyUI(fluidPage(
 
@@ -31,7 +31,7 @@ shinyUI(fluidPage(
       selectInput("value",
                   "Value",
                   values,
-                  selected = "Population"),
+                  selected = "total_population"),
       
       selectInput("num_colors",
                   "Number of Colors",
