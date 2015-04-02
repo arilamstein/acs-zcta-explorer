@@ -38,7 +38,7 @@ shinyUI(fluidPage(
                   msa_list,
                   msa),
       
-      selectInput("counties", "Counties", county_list, selected=county_list, multiple=TRUE),
+      uiOutput("counties"),
       
       selectInput("ZIP Code Tabulated Areas (ZCTAS):", "ZIP Codes", zcta_list, selected=zcta_list, multiple=TRUE)
       

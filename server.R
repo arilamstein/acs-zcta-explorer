@@ -17,7 +17,7 @@ shinyServer(function(input, output) {
       unique()
     county_list = county_list$county.name
     
-    selectInput("counties", "Counties", county_list, selected=NULL, multiple=TRUE)
+    selectInput("counties", "Counties", county_list, selected=county_list, multiple=TRUE)
   })
 
 })
