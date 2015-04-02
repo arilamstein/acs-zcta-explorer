@@ -27,7 +27,8 @@ shinyServer(function(input, output) {
       stop("invalid input")
     }
 
-    zip_choropleth(df_demographics, msa_zoom=input$msa)
+    num_colors = as.numeric(input$num_colors)
+    zip_choropleth(df_demographics, num_colors=num_colors, msa_zoom=input$msa)
   })
   
   output$counties = renderUI({ 

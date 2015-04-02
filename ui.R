@@ -33,6 +33,11 @@ shinyUI(fluidPage(
                   values,
                   selected = "Population"),
       
+      selectInput("num_colors",
+                  "Number of Colors",
+                  1:7,
+                  selected=7),
+      
       uiOutput("counties"),
       uiOutput("zips")
     ),
