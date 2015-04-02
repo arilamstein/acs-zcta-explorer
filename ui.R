@@ -9,12 +9,12 @@ msa_county_df = zip.regions %>%
 msa_list = unique(msa_county_df$cbsa.title)
 
 values = c("Population", 
-           "Median Income", 
+           "Per Capita Income", 
            "Median Rent", 
-           "% White", 
-           "% Black", 
-           "% Asian", 
-           "% Hispanic",
+           "% White not Hispanic or Latino", 
+           "% Black or African American not Hispanic or Latino", 
+           "% Asian not Hispanic or Latino", 
+           "% Hispanic or Latino",
            "Median Age")
 
 shinyUI(fluidPage(
