@@ -1,6 +1,16 @@
+list.of.packages <- c("choroplethr", "choroplethrMaps", "dplyr", "devtools", "shiny")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(shiny)
-library(choroplethrZip)
+library(choroplethr)
+library(choroplethrMaps)
 library(dplyr)
+library(devtools)
+
+if (!"choroplethrZip" %in% installed.packages()[, "Package"]) {
+  install_github('arilamstein/choroplethrZip@v1.1.1')
+}
 
 #data(df_demographics)
 shinyServer(function(input, output) {

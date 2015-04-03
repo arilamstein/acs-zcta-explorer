@@ -1,5 +1,4 @@
 library(shiny)
-library(choroplethrZip)
 library(dplyr)
 
 # get a list of all MSAs in the US
