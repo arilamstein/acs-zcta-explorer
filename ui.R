@@ -31,12 +31,12 @@ shinyUI(fluidPage(
       selectInput("value",
                   "Value",
                   values,
-                  selected = "total_population"),
+                  selected = sample(values, 1)),
       
       selectInput("num_colors",
                   "Number of Colors",
                   1:7,
-                  selected=7),
+                  selected=sample(1:7, 1)),
       
       uiOutput("counties"),
       uiOutput("zips")
