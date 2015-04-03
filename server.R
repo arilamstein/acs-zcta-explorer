@@ -8,11 +8,14 @@ library(choroplethrMaps)
 library(dplyr)
 library(devtools)
 
+# choroplethrZip is on github
 if (!"choroplethrZip" %in% installed.packages()[, "Package"]) {
   install_github('arilamstein/choroplethrZip@v1.1.1')
 }
+library(choroplethrZip)
 
-#data(df_demographics)
+load("df_demographics.rdata")
+
 shinyServer(function(input, output) {
 
   output$map = renderPlot({

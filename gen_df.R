@@ -46,4 +46,5 @@ library(choroplethrZip)
 data(zip.regions)
 df_demographics = df_demographics[df_demographics$region %in% zip.regions$region, ]
 
+# save the data 
 save(df_demographics, file="df_demographics.rdata")
