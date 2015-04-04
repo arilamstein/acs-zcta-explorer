@@ -42,9 +42,11 @@ df_demographics = merge(df_race, df_income)
 df_demographics = merge(df_demographics, df_rent)  
 df_demographics = merge(df_demographics, df_age)
 
+# remove the regions (such as zips in Puerto Rico) that are not on my map.
 library(choroplethrZip)
 data(zip.regions)
 df_demographics = df_demographics[df_demographics$region %in% zip.regions$region, ]
 
 # save the data 
 save(df_demographics, file="df_demographics.rdata")
+write.csv(df_demographics, file="df_demographics.csv")
