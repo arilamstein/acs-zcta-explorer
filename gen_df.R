@@ -50,3 +50,12 @@ df_demographics = df_demographics[df_demographics$region %in% zip.regions$region
 # save the data 
 save(df_demographics, file="df_demographics.rdata")
 write.csv(df_demographics, file="df_demographics.csv")
+
+# subset san francisco and save it
+data(zip.regions)
+sf_zips = zip.regions[zip.regions$county.name == "san francisco", ]
+sf_zips = sf_zips$regionboxplot(d[, c("percent_white", "percent_black", "percent_asian", "percent_hispanic")]
+
+sf_demographics = df_demographics[df_demographics$region %in% sf_zips, ]
+save(sf_demographics, file="sf_demographics.rdata")
+write.csv(sf_demographics, file="sf_demographics.csv")
