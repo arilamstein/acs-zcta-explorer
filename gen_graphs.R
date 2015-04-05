@@ -14,20 +14,36 @@ boxplot(sf_demographics[, c("percent_white", "percent_black", "percent_asian", "
 # generate zcta choropleths of each ethnicity
 library(choroplethrZip)
 sf_demographics$value = sf_demographics$percent_white
-choro_white = zip_choropleth(sf_demographics, num_colors=1, county_zoom=6075)
+choro_white = zip_choropleth(sf_demographics, title="Percent White", legend="Percent", num_colors=1, county_zoom=6075)
 choro_white
 
 sf_demographics$value = sf_demographics$percent_black
-choro_black = zip_choropleth(sf_demographics, num_colors=1, county_zoom=6075)
+choro_black = zip_choropleth(sf_demographics, title="Percent Black\nor African American", legend="Percent", num_colors=1, county_zoom=6075)
 choro_black
 
 sf_demographics$value = sf_demographics$percent_asian
-choro_asian = zip_choropleth(sf_demographics, num_colors=1, county_zoom=6075)
+choro_asian = zip_choropleth(sf_demographics, title="Percent Asian", legend="Percent", num_colors=1, county_zoom=6075)
 choro_asian
 
 sf_demographics$value = sf_demographics$percent_hispanic
-choro_hispanic = zip_choropleth(sf_demographics, num_colors=1, county_zoom=6075)
+choro_hispanic = zip_choropleth(sf_demographics, title="Percent Hispanic\nor Latino", legend="Percent", num_colors=1, county_zoom=6075)
 choro_hispanic
 
+# show all 4 maps in the same image
 library(gridExtra)
-?grid.arrange
+grid.arrange(choro_white, choro_black, choro_asian, choro_hispanic,
+             main="San Francisco Zip Code Tabulated Areas (ZCTAs)\n")
+
+# income 
+boxplot_income = boxplot(sf_demographics[,"per_capita_income"],
+                         ylab="Per Capita Income",
+                         main="Per Capita Income in San Francisco Zips")
+boxplot_income
+
+# show a continuous and quartile map on the same image
+sf_demographics$value=sf_demographics$per_capita_income
+choro_income_continuous = zip_choropleth(sf_demographics, title="Continuous Scale", legend="Dollars", num_colors=1, county_zoom=6075)
+choro_income_quartile = zip_choropleth(sf_demographics, title="Quartiles", legend="Dollars", num_colors=4, county_zoom=6075)
+grid.arrange(choro_income_continuous, choro_income_quartile,
+             main="San Francisco ZCTA Per Capita Income\n",
+             nrow=1, ncol=2)
