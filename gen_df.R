@@ -15,10 +15,10 @@ df_race = data.frame(region                   = as.character(geography(acs.data)
                      asian_alone_not_hispanic = as.numeric(estimate(acs.data[,6])),
                      hispanic_all_races       = as.numeric(estimate(acs.data[,12])))
 
-df_race$percent_white    = acs.df$white_alone_not_hispanic / acs.df$total_population
-df_race$percent_black    = acs.df$black_alone_not_hispanic / acs.df$total_population
-df_race$percent_asian    = acs.df$asian_alone_not_hispanic / acs.df$total_population
-df_race$percent_hispanic = acs.df$hispanic_all_races       / acs.df$total_population
+df_race$percent_white    = round(acs.df$white_alone_not_hispanic / acs.df$total_population * 100)
+df_race$percent_black    = round(acs.df$black_alone_not_hispanic / acs.df$total_population * 100)
+df_race$percent_asian    = round(acs.df$asian_alone_not_hispanic / acs.df$total_population * 100)
+df_race$percent_hispanic = round(acs.df$hispanic_all_races       / acs.df$total_population * 100)
 
 df_race = df_race[, c("region", "total_population", "percent_white", "percent_black", "percent_asian", "percent_hispanic")]
 
