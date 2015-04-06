@@ -6,6 +6,6 @@ You can view the running application [here](https://arilamstein.shinyapps.io/acs
 if you see an error message that means that I have exausted my monthly quota at shinyapps.io. In that case you
 can install the application yourself by typing the following from an R console:
 
-# install.packages("shiny")
-library(shiny)
-shiny::runGitHub("acs-zcta-explorer", "arilamstein")
+    # install.packages("shiny")
+    library(shiny)
+    shiny::runGitHub("acs-zcta-explorer", "arilamstein")
