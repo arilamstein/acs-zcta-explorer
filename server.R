@@ -21,7 +21,9 @@ shinyServer(function(input, output) {
   output$map = renderPlot({
     df_demographics$value = df_demographics[, input$value]
     num_colors = as.numeric(input$num_colors)
-    zip_choropleth(df_demographics, num_colors=num_colors, zip_zoom=input$zips)
+    if (!is.null(input$zips)) {
+      zip_choropleth(df_demographics, num_colors=num_colors, zip_zoom=input$zips)
+    }
   })
   
   output$counties = renderUI({ 
