@@ -1,5 +1,6 @@
 library(shiny)
 library(dplyr)
+require(markdown)
 
 # get a list of all MSAs in the US
 data(zip.regions)
