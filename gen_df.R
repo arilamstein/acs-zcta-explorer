@@ -8,17 +8,17 @@ race.data = acs.fetch(geography=zip_geo, table.number = "B03002", col.names = "p
 # acs.data@acs.colnames
 
 # convert to a data.frame 
-df_race = data.frame(region                   = as.character(geography(acs.data)$zipcodetabulationarea), 
-                     total_population         = as.numeric(estimate(acs.data[,1])),
-                     white_alone_not_hispanic = as.numeric(estimate(acs.data[,3])),
-                     black_alone_not_hispanic = as.numeric(estimate(acs.data[,4])),
-                     asian_alone_not_hispanic = as.numeric(estimate(acs.data[,6])),
-                     hispanic_all_races       = as.numeric(estimate(acs.data[,12])))
+df_race = data.frame(region                   = as.character(geography(race.data)$zipcodetabulationarea), 
+                     total_population         = as.numeric(estimate(race.data[,1])),
+                     white_alone_not_hispanic = as.numeric(estimate(race.data[,3])),
+                     black_alone_not_hispanic = as.numeric(estimate(race.data[,4])),
+                     asian_alone_not_hispanic = as.numeric(estimate(race.data[,6])),
+                     hispanic_all_races       = as.numeric(estimate(race.data[,12])))
 
-df_race$percent_white    = round(acs.df$white_alone_not_hispanic / acs.df$total_population * 100)
-df_race$percent_black    = round(acs.df$black_alone_not_hispanic / acs.df$total_population * 100)
-df_race$percent_asian    = round(acs.df$asian_alone_not_hispanic / acs.df$total_population * 100)
-df_race$percent_hispanic = round(acs.df$hispanic_all_races       / acs.df$total_population * 100)
+df_race$percent_white    = round(df_race$white_alone_not_hispanic / df_race$total_population * 100)
+df_race$percent_black    = round(df_race$black_alone_not_hispanic / df_race$total_population * 100)
+df_race$percent_asian    = round(df_race$asian_alone_not_hispanic / df_race$total_population * 100)
+df_race$percent_hispanic = round(df_race$hispanic_all_races       / df_race$total_population * 100)
 
 df_race = df_race[, c("region", "total_population", "percent_white", "percent_black", "percent_asian", "percent_hispanic")]
 
@@ -54,7 +54,7 @@ write.csv(df_demographics, file="df_demographics.csv")
 # subset san francisco and save it
 data(zip.regions)
 sf_zips = zip.regions[zip.regions$county.name == "san francisco", ]
-sf_zips = sf_zips$regionboxplot(d[, c("percent_white", "percent_black", "percent_asian", "percent_hispanic")]
+sf_zips = sf_zips$region
 
 sf_demographics = df_demographics[df_demographics$region %in% sf_zips, ]
 save(sf_demographics, file="sf_demographics.rdata")
