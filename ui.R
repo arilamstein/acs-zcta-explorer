@@ -18,8 +18,10 @@ values = c("Population"                                         = "total_populat
 
 shinyUI(fluidPage(
 
-  titlePanel("American Community Survey ZIP Explorer"),
+  titlePanel("US Zip Code Demographic Explorer"),
 
+  fluidRow(column(12, includeMarkdown("1.md"))),
+  
   sidebarLayout(
     sidebarPanel(
       selectInput("msa", 
