@@ -15,6 +15,8 @@ df_race = data.frame(region                   = as.character(geography(race.data
                      asian_alone_not_hispanic = as.numeric(estimate(race.data[,6])),
                      hispanic_all_races       = as.numeric(estimate(race.data[,12])))
 
+df_race$region = as.character(df_race$region) # no idea why, but it's a factor before this line
+
 df_race$percent_white    = round(df_race$white_alone_not_hispanic / df_race$total_population * 100)
 df_race$percent_black    = round(df_race$black_alone_not_hispanic / df_race$total_population * 100)
 df_race$percent_asian    = round(df_race$asian_alone_not_hispanic / df_race$total_population * 100)
@@ -59,3 +61,4 @@ sf_zips = sf_zips$region
 sf_demographics = df_demographics[df_demographics$region %in% sf_zips, ]
 save(sf_demographics, file="sf_demographics.rdata")
 write.csv(sf_demographics, file="sf_demographics.csv")
+
