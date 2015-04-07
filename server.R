@@ -22,6 +22,12 @@ shinyServer(function(input, output) {
     df_demographics$value = df_demographics[, input$value]
     num_colors = as.numeric(input$num_colors)
     if (!is.null(input$zips)) {
+      # sometimes maps take a long time to load. 
+      # so show a message.
+      progress = shiny::Progress$new()
+      on.exit(progress$close())
+      progress$set(message = "Creating map. Please wait.", value = 0)
+      
       zip_choropleth(df_demographics, num_colors=num_colors, zip_zoom=input$zips)
     }
   })
