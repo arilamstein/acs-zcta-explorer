@@ -28,17 +28,17 @@ shinyUI(fluidPage(
       selectInput("msa", 
                   "Metropolitan Statistical Area (MSA)", 
                   msa_list,
-                  sample(msa_list, 1)),
+                  selected = "San Francisco-Oakland-Hayward, CA"),
       
       selectInput("value",
                   "Value",
                   values,
-                  selected = sample(values, 1)),
+                  selected = "per_capita_income"),
       
       selectInput("num_colors",
                   "Number of Colors",
                   1:7,
-                  selected=sample(1:7, 1)),
+                  selected = 2),
       
       uiOutput("counties"),
       uiOutput("zips")

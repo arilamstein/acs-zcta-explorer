@@ -1,4 +1,5 @@
 name: acs-zcta-explorer
 account: arilamstein
-bundleId: 158076
+bundleId: 161963
 url: http://arilamstein.shinyapps.io/acs-zcta-explorer
+server: shinyapps.io
