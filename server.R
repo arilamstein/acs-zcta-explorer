@@ -1,4 +1,4 @@
-list.of.packages <- c("choroplethr", "choroplethrMaps", "dplyr", "devtools", "shiny")
+list.of.packages <- c("choroplethr", "choroplethrMaps", "dplyr", "devtools", "shiny", "mapproj")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
@@ -7,6 +7,8 @@ library(choroplethr)
 library(choroplethrMaps)
 library(dplyr)
 library(devtools)
+library(mapproj)
+library(ggplot2)
 
 # choroplethrZip is on github
 if (!"choroplethrZip" %in% installed.packages()[, "Package"]) {
@@ -28,10 +30,10 @@ shinyServer(function(input, output) {
       on.exit(progress$close())
       progress$set(message = "Creating map. Please wait.", value = 0)
       
-      zip_choropleth(df_demographics, num_colors=num_colors, zip_zoom=input$zips)
+      zip_choropleth(df_demographics, num_colors=num_colors, zip_zoom=input$zips) + coord_map()
     }
   })
-  
+
   output$counties = renderUI({ 
     county_list = get_all_counties_in_msa(input$msa)
     
